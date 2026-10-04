@@ -8,7 +8,7 @@ public:
         
         // Optimal
         
-        int n=nums1.size();
+        int n=nums1.size(); // test
         int m=nums2.size();
         
         if(n>m) return findMedianSortedArrays(nums2,nums1);
