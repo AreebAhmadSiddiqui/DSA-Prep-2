@@ -1,19 +1,19 @@
 class Solution {
 public:
-    int dist(char a, char b){
-        int x = abs((a-'0') - (b-'0'));
-        return min(x, 10-x);
-    }
-
     int minRotations(string s) {
-        int total = 0;
-        int last = '0';
+        int minRot=0; // test
+        int prev=0;
+        for(int i=0;i<s.size();i++){
+            
+            int curr=s[i]-'0';
+            // cout<<prev<<" "<<curr<<' ';
+            int op1=abs(curr-prev);
+            int op2=abs(10-op1);
 
-        for(char c : s){
-            total += dist(last, c);
-            last = c;
+            minRot+=min(op1,op2);
+            // cout<<min(op1,op2)<<'\n';
+            prev=curr;
         }
-
-        return total;
+        return minRot;
     }
 };
