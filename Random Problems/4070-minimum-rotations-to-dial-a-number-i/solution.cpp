@@ -1,7 +1,7 @@
 class Solution {
 public:
     int minRotations(string s) {
-        int minRot=0;
+        int minRot=0; // test
         int prev=0;
         for(int i=0;i<s.size();i++){
             
