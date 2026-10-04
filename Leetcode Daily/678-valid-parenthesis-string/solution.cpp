@@ -23,7 +23,7 @@ public:
     bool checkValidString(string s) {
         
         // Check all ways
-        int n=s.size();
+        int n=s.size(); ///test
         // vector<vector<int>> dp(n+1,vector<int> (n+2,0)); // dp[i][balance] -> balance +1 if '(' else -1 if anytime < 0 return false;
 
         // return help(0,0,n,s,dp);
