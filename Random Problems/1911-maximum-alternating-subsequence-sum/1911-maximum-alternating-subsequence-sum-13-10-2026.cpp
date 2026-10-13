@@ -25,19 +25,24 @@ public:
         vector<vector<long long>> dp(n+1,vector<long long> (2, 0));
 
         for(int i=n-1;i>=0;i--){
-            for(int lastEleParity=0;lastEleParity<=1;lastEleParity++){
-                
-                long long notPick=0+dp[i+1][lastEleParity];
-                
-                long long pick=0;
+            // LastEleParity=0;
+            long long notPick=0+dp[i+1][0];
+            
+            long long pick=0;
 
-                bool isCurrEven = lastEleParity==1;
+            pick=-nums[i]+dp[i+1][1];
+            
+            dp[i][0]=max(pick,notPick);
 
-                if(isCurrEven) pick=nums[i]+dp[i+1][!isCurrEven];
-                else pick=-nums[i]+dp[i+1][!isCurrEven];
+            // LastEleParity=1;
 
-                dp[i][lastEleParity]=max(pick,notPick);
-            }
+            notPick=0+dp[i+1][1];
+            
+            pick=0;
+
+            pick=nums[i]+dp[i+1][0];
+
+            dp[i][1]=max(pick,notPick);
         }
 
         return dp[0][1];
