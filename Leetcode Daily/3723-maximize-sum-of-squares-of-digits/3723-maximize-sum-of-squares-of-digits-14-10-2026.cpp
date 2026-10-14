@@ -16,7 +16,7 @@ public:
 
         string ans="";
 
-        while(remDigits!=0 && times!=0){
+        while(times!=0){
             ans+='9';
             times--;
             remDigits--;
