@@ -37,7 +37,7 @@ public:
 
         int ans=-1;
 
-        cout<<ascMismatch<<" "<<descMismatch<<'\n';
+        // cout<<ascMismatch<<" "<<descMismatch<<'\n';
 
         if(ascMismatch==1){
             ans=min(zeroIdx,1+(n-zeroIdx)+1); // 1 for each reverse
