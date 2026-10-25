@@ -5,6 +5,7 @@ public:
     }
     bool dfs(int row,int col,vector<vector<int>> &grid,vector<vector<int>> &vis){
         if(!isValid(row,col,grid)) return false; // not surrounded land cell
+        if(vis[row][col]==-1) return false;
         if(grid[row][col]==1 || vis[row][col]) return true;  // could be surrounded
 
         vis[row][col]=1;
@@ -19,6 +20,7 @@ public:
             int newCol=col+dy[del];
 
             if(!dfs(newRow,newCol,grid,vis)){
+                vis[row][col]=-1; // for future zeroes
                 isSurrounded=false;
             }
         }
