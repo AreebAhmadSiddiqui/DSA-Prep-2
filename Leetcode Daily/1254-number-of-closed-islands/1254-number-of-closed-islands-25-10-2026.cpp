@@ -1,11 +1,11 @@
 class Solution {
 public:
-    bool isValid(int r,int c,vector<vector<int>> &grid,vector<vector<int>> &vis){
+    bool isValid(int r,int c,vector<vector<int>> &grid){
         return r<grid.size() && c<grid[0].size() && r>=0 && c>=0;
     }
     bool dfs(int row,int col,vector<vector<int>> &grid,vector<vector<int>> &vis){
-        if(!isValid(row,col,grid,vis)) return false;
-        if(grid[row][col]==1 || vis[row][col]) return true;
+        if(!isValid(row,col,grid)) return false; // not surrounded land cell
+        if(grid[row][col]==1 || vis[row][col]) return true;  // could be surrounded
 
         vis[row][col]=1;
         
@@ -33,6 +33,14 @@ public:
         // I will dfs from every zero
         // if the dfs path returns true everytime i will add this to one of my group
 
+        // first of all the row,col should be valid
+        // if it is valid then two cases either I will be at a zero or one
+        // if it is one return true
+        // also if it is a visited zero return true becaue this zero was valid before
+
+        // since we are checking 4 directions if in any of these directions we get a false which we will get for those zeros which are at the boundaries, we return false for them
+
+        // if by doing a dfs we get true we add that into the cnt, ( no of components )
 
         vector<vector<int>> vis(m,vector<int> (n,0));
 
