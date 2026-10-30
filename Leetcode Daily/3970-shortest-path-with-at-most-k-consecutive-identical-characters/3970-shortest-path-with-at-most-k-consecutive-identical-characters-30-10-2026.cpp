@@ -13,10 +13,10 @@ public:
 
         priority_queue<pair<int,pair<int,int>>> pq;  // {dis,{k,node}};
 
-        vector<vector<int>> dis(n,vector<int> (k+1,1e9));
+        vector<vector<int>> dis(n,vector<int> (k+1,1e9)); // only distance would not be sufficient so lets take both dis and k
 
-        pq.push({0,{1,0}});
-        dis[0][1]=0;
+        pq.push({0,{1,0}});  // why 1 because we took one character na as we are pushing on eline 35
+        dis[0][1]=0; // similar reason as above
 
         while(!pq.empty()){
             auto temp=pq.top();
@@ -26,7 +26,7 @@ public:
             int wt=-temp.first;
             int prevIdenticalCharCnt=temp.second.first;
 
-            if(node==n-1) return wt;
+            // if(node==n-1) return wt; // since dijkstra guarantees minimum therefor this should be the answer, you can skip this as well and at the end run a loop and check the min in dp[n-1] for every k=[0,k]
 
             for(auto &it:adj[node]){
                 int child=it.first;
@@ -41,6 +41,8 @@ public:
             }
         }
 
-        return -1;
+        int ans=1e9;
+        for(int i=0;i<=k;i++) ans=min(ans,dis[n-1][i]);
+        return ans==1e9 ? -1 : ans;
     }
 };
