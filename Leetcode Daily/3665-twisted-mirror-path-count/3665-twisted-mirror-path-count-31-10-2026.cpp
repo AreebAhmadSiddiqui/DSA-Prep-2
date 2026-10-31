@@ -1,5 +1,8 @@
 class Solution {
 public: 
+    // i was first getting all the paths in backtracking solution turns out it will give tle
+    // do I need all paths in a string??? if I can reach ending cell withouth visiting any cell twice it will be a unique path only na
+    // be in any number of direction 2,3,4,5,6,7,8 ,,,, n Samjhe kuch noobde???
     int mod=1e9+7;
     int help(int row,int col,int prevMove,int n,int m,vector<vector<int>>& grid,vector<vector<vector<int>>>& dp){
         if(row<0 || row>=n || col<0 || col>=m ) return 0;
